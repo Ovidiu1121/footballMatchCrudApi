@@ -1,0 +1,10 @@
+﻿insert into footballmatch (id, stadium, score, country) values (1, 'Cineumbeuy', '4-0', 'Indonesia');
+insert into footballmatch (id, stadium, score, country) values (2, 'Ad Dasmah', '1-6', 'Kuwait');
+insert into footballmatch (id, stadium, score, country) values (3, 'Kotido', '4-7', 'Uganda');
+insert into footballmatch (id, stadium, score, country) values (4, 'Tarbes', '1-8', 'France');
+insert into footballmatch (id, stadium, score, country) values (5, 'Lwówek Śląski', '3-5', 'Poland');
+insert into footballmatch (id, stadium, score, country) values (6, 'Witzenhausen', '2-9', 'Germany');
+insert into footballmatch (id, stadium, score, country) values (7, 'Vilhelmina', '2-9', 'Sweden');
+insert into footballmatch (id, stadium, score, country) values (8, 'Punkaharju', '3-1', 'Finland');
+insert into footballmatch (id, stadium, score, country) values (9, 'Yongfeng', '2-1', 'China');
+insert into footballmatch (id, stadium, score, country) values (10, 'Badāmā', '1-3', 'Syria');

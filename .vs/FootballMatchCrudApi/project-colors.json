@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "c873b49a-8b44-4aaf-83cb-3248f4d57f1e": {
+      "ProjectGuid": "c873b49a-8b44-4aaf-83cb-3248f4d57f1e",
+      "DisplayName": "FootballMatchCrudApi",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
