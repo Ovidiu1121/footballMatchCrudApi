@@ -5,11 +5,13 @@ namespace FootballMatchCrudApi.Matches.Repository.interfaces
 {
     public interface IFootballMatchRepository
     {
-        Task<IEnumerable<FootballMatch>> GetAllAsync();
-        Task<FootballMatch> GetByIdAsync(int id);
-        Task<FootballMatch> GetByScoreAsync(string score);
-        Task<FootballMatch> CreateMatch(CreateMatchRequest request);
-        Task<FootballMatch> UpdateMatch(int id,UpdateMatchRequest request);
-        Task<FootballMatch> DeleteMatch(int id);
+        Task<ListMatchDto> GetAllAsync();
+        Task<MatchDto> GetByIdAsync(int id);
+        Task<MatchDto> GetByScoreAsync(string score);
+        Task<MatchDto> GetByStadiumAsync(string stadium);
+        Task<MatchDto> GetByCountryAsync(string country);
+        Task<MatchDto> CreateMatch(CreateMatchRequest request);
+        Task<MatchDto> UpdateMatch(int id,UpdateMatchRequest request);
+        Task<MatchDto> DeleteMatch(int id);
     }
 }

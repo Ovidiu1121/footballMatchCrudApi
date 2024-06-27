@@ -5,9 +5,9 @@ namespace FootballMatchCrudApi.Matches.Service.Interfaces
 {
     public interface IMatchCommandService
     {
-        Task<FootballMatch> CreateMatch(CreateMatchRequest request);
-        Task<FootballMatch> UpdateMatch(int id,UpdateMatchRequest request);
-        Task<FootballMatch> DeleteMatch(int id);
+        Task<MatchDto> CreateMatch(CreateMatchRequest request);
+        Task<MatchDto> UpdateMatch(int id,UpdateMatchRequest request);
+        Task<MatchDto> DeleteMatch(int id);
 
     }
 }

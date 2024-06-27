@@ -11,6 +11,7 @@ namespace FootballMatchCrudApi.Mappings
         {
             CreateMap<CreateMatchRequest, FootballMatch>();
             CreateMap<UpdateMatchRequest, FootballMatch>();
+            CreateMap<MatchDto, FootballMatch>().ReverseMap();
         }
 
     }

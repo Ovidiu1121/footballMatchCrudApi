@@ -18,7 +18,14 @@ namespace FootballMatchCrudApi.Matches.Repository
             _mapper = mapper;
         }
 
-        public async Task<FootballMatch> CreateMatch(CreateMatchRequest request)
+        public async Task<MatchDto> GetByCountryAsync(string country)
+        {
+            var match = await _context.Matches.Where(f => f.Country.Equals(country)).FirstOrDefaultAsync();
+            
+            return _mapper.Map<MatchDto>(match);
+        }
+
+        public async Task<MatchDto> CreateMatch(CreateMatchRequest request)
         {
             var match = _mapper.Map<FootballMatch>(request);
 
@@ -26,10 +33,10 @@ namespace FootballMatchCrudApi.Matches.Repository
 
             await _context.SaveChangesAsync();
 
-            return match;
+            return _mapper.Map<MatchDto>(match);
         }
 
-        public async Task<FootballMatch> DeleteMatch(int id)
+        public async Task<MatchDto> DeleteMatch(int id)
         {
             var match = await _context.Matches.FindAsync(id);
 
@@ -37,25 +44,43 @@ namespace FootballMatchCrudApi.Matches.Repository
 
             await _context.SaveChangesAsync();
 
-            return match;
+            return _mapper.Map<MatchDto>(match);
         }
 
-        public async Task<IEnumerable<FootballMatch>> GetAllAsync()
+        public async Task<ListMatchDto> GetAllAsync()
         {
-            return await _context.Matches.ToListAsync();
+            List<FootballMatch> result = await _context.Matches.ToListAsync();
+            
+            ListMatchDto listMatchDto = new ListMatchDto()
+            {
+                matchList = _mapper.Map<List<MatchDto>>(result)
+            };
+
+            return listMatchDto;
         }
 
-        public async Task<FootballMatch> GetByScoreAsync(string score)
+        public async Task<MatchDto> GetByScoreAsync(string score)
         {
-            return await _context.Matches.FirstOrDefaultAsync(obj => obj.Score.Equals(score));
+            var match = await _context.Matches.Where(f => f.Score.Equals(score)).FirstOrDefaultAsync();
+            
+            return _mapper.Map<MatchDto>(match);
         }
-
-        public async Task<FootballMatch> GetByIdAsync(int id)
+        
+        public async Task<MatchDto> GetByIdAsync(int id)
         {
-            return await _context.Matches.FirstOrDefaultAsync(obj => obj.Id.Equals(id));
+            var match = await _context.Matches.Where(f => f.Id == id).FirstOrDefaultAsync();
+            
+            return _mapper.Map<MatchDto>(match);
+        }
+        
+        public async Task<MatchDto> GetByStadiumAsync(string stadium)
+        {
+            var match = await _context.Matches.Where(f => f.Stadium.Equals(stadium)).FirstOrDefaultAsync();
+            
+            return _mapper.Map<MatchDto>(match);
         }
 
-        public async Task<FootballMatch> UpdateMatch(int id,UpdateMatchRequest request)
+        public async Task<MatchDto> UpdateMatch(int id,UpdateMatchRequest request)
         {
 
             var match = await _context.Matches.FindAsync(id);
@@ -68,7 +93,7 @@ namespace FootballMatchCrudApi.Matches.Repository
 
             await _context.SaveChangesAsync();
 
-            return match;
+            return _mapper.Map<MatchDto>(match);
         }
     }
 }

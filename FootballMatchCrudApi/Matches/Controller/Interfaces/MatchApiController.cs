@@ -11,27 +11,43 @@ namespace FootballMatchCrudApi.Matches.Controller.Interfaces
         [HttpGet("all")]
         [ProducesResponseType(statusCode: 200, type: typeof(IEnumerable<FootballMatch>))]
         [ProducesResponseType(statusCode: 404, type: typeof(String))]
-        public abstract Task<ActionResult<IEnumerable<FootballMatch>>> GetAll();
+        public abstract Task<ActionResult<ListMatchDto>> GetAll();
 
         [HttpPost("create")]
         [ProducesResponseType(statusCode: 201, type: typeof(FootballMatch))]
         [ProducesResponseType(statusCode: 400, type: typeof(String))]
-        public abstract Task<ActionResult<FootballMatch>> CreateMatch([FromBody] CreateMatchRequest request);
+        public abstract Task<ActionResult<MatchDto>> CreateMatch([FromBody] CreateMatchRequest request);
 
         [HttpPut("update/{id}")]
         [ProducesResponseType(statusCode: 202, type: typeof(FootballMatch))]
         [ProducesResponseType(statusCode: 400, type: typeof(String))]
         [ProducesResponseType(statusCode: 404, type: typeof(String))]
-        public abstract Task<ActionResult<FootballMatch>> UpdateMatch([FromRoute]int id, [FromBody] UpdateMatchRequest request);
+        public abstract Task<ActionResult<MatchDto>> UpdateMatch([FromRoute]int id, [FromBody] UpdateMatchRequest request);
 
         [HttpDelete("delete/{id}")]
         [ProducesResponseType(statusCode: 202, type: typeof(FootballMatch))]
         [ProducesResponseType(statusCode: 404, type: typeof(String))]
-        public abstract Task<ActionResult<FootballMatch>> DeleteMatch([FromRoute] int id);
+        public abstract Task<ActionResult<MatchDto>> DeleteMatch([FromRoute] int id);
 
-        [HttpGet("{id}")]
+        [HttpGet("id/{id}")]
         [ProducesResponseType(statusCode: 202, type: typeof(FootballMatch))]
         [ProducesResponseType(statusCode: 404, type: typeof(String))]
-        public abstract Task<ActionResult<FootballMatch>> GetByIdRoute([FromRoute] int id);
+        public abstract Task<ActionResult<MatchDto>> GetByIdRoute([FromRoute] int id);
+        
+        [HttpGet("score/{score}")]
+        [ProducesResponseType(statusCode: 202, type: typeof(FootballMatch))]
+        [ProducesResponseType(statusCode: 404, type: typeof(String))]
+        public abstract Task<ActionResult<MatchDto>> GetByScoreRoute([FromRoute] string score);
+        
+        [HttpGet("stadium/{stadium}")]
+        [ProducesResponseType(statusCode: 202, type: typeof(FootballMatch))]
+        [ProducesResponseType(statusCode: 404, type: typeof(String))]
+        public abstract Task<ActionResult<MatchDto>> GetByStadiumRoute([FromRoute] string stadium);
+        
+        [HttpGet("country/{country}")]
+        [ProducesResponseType(statusCode: 202, type: typeof(FootballMatch))]
+        [ProducesResponseType(statusCode: 404, type: typeof(String))]
+        public abstract Task<ActionResult<MatchDto>> GetByCountryRoute([FromRoute] string country);
+        
     }
 }

@@ -17,9 +17,9 @@ namespace FootballMatchCrudApi.Matches.Service
             _repository = repository;
         }
 
-        public async Task<FootballMatch> CreateMatch(CreateMatchRequest request)
+        public async Task<MatchDto> CreateMatch(CreateMatchRequest request)
         {
-            FootballMatch match = await _repository.GetByScoreAsync(request.Score);
+            MatchDto match = await _repository.GetByScoreAsync(request.Score);
 
             if (match!=null)
             {
@@ -30,11 +30,11 @@ namespace FootballMatchCrudApi.Matches.Service
             return match;
         }
 
-        public async Task<FootballMatch> DeleteMatch(int id)
+        public async Task<MatchDto> DeleteMatch(int id)
         {
-            FootballMatch match = await _repository.GetByIdAsync(id);
+            MatchDto match = await _repository.GetByIdAsync(id);
 
-            if (match!=null)
+            if (match==null)
             {
                 throw new ItemDoesNotExist(Constants.MATCH_DOES_NOT_EXIST);
             }
@@ -43,9 +43,9 @@ namespace FootballMatchCrudApi.Matches.Service
             return match;
         }
 
-        public async Task<FootballMatch> UpdateMatch(int id,UpdateMatchRequest request)
+        public async Task<MatchDto> UpdateMatch(int id,UpdateMatchRequest request)
         {
-            FootballMatch match = await _repository.GetByIdAsync(id);
+            MatchDto match = await _repository.GetByIdAsync(id);
 
             if (match==null)
             {

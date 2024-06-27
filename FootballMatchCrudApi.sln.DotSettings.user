@@ -1,0 +1,13 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=777a484d_002D2b27_002D44b2_002D9dc7_002Dcf2e3ca8f287/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Update_ValidData" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;ProjectFolder&gt;424D86F7-921B-4469-A3AA-A4B19B83B319/d:UnitTests&lt;/ProjectFolder&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;xUnit::424D86F7-921B-4469-A3AA-A4B19B83B319::net6.0::tests.IntegrationTests.MatchIntegrationTests.Post_Create_ValidRequest_ReturnsCreatedStatusCode_ValidProductContentResponse&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::424D86F7-921B-4469-A3AA-A4B19B83B319::net6.0::tests.IntegrationTests.MatchIntegrationTests.Post_Create_DoctorAlreadyExists_ReturnsBadRequestStatusCode&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::424D86F7-921B-4469-A3AA-A4B19B83B319::net6.0::tests.IntegrationTests.MatchIntegrationTests.Put_Update_ValidRequest_ReturnsAcceptedStatusCode_ValidProductContentResponse&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::424D86F7-921B-4469-A3AA-A4B19B83B319::net6.0::tests.IntegrationTests.MatchIntegrationTests.Put_Update_DoctorDoesNotExists_ReturnsNotFoundStatusCode&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::424D86F7-921B-4469-A3AA-A4B19B83B319::net6.0::tests.IntegrationTests.MatchIntegrationTests.Delete_Delete_DoctorExists_ReturnsDeletedDoctor&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
+  &lt;/Or&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

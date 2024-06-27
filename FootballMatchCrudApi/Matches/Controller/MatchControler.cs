@@ -19,13 +19,13 @@ namespace FootballMatchCrudApi.Matches.Controller
             _matchQueryService=matchQueryService;
         }
 
-        public override async Task<ActionResult<FootballMatch>> CreateMatch([FromBody] CreateMatchRequest request)
+        public override async Task<ActionResult<MatchDto>> CreateMatch([FromBody] CreateMatchRequest request)
         {
             try
             {
                 var matches = await _matchCommandService.CreateMatch(request);
 
-                return Ok(matches);
+                return Created("Mathc-ul a fost adaugat",matches);
             }
             catch (ItemAlreadyExists ex)
             {
@@ -33,7 +33,7 @@ namespace FootballMatchCrudApi.Matches.Controller
             }
         }
 
-        public override async Task<ActionResult<FootballMatch>> DeleteMatch([FromRoute] int id)
+        public override async Task<ActionResult<MatchDto>> DeleteMatch([FromRoute] int id)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace FootballMatchCrudApi.Matches.Controller
             }
         }
 
-        public override async Task<ActionResult<IEnumerable<FootballMatch>>> GetAll()
+        public override async Task<ActionResult<ListMatchDto>> GetAll()
         {
 
             try
@@ -61,7 +61,7 @@ namespace FootballMatchCrudApi.Matches.Controller
             }
         }
 
-        public override async Task<ActionResult<FootballMatch>> GetByIdRoute([FromRoute] int id)
+        public override async Task<ActionResult<MatchDto>> GetByIdRoute([FromRoute] int id)
         {
             try
             {
@@ -73,8 +73,47 @@ namespace FootballMatchCrudApi.Matches.Controller
                 return NotFound(ex.Message);
             }
         }
+        
+        public override async Task<ActionResult<MatchDto>> GetByScoreRoute([FromRoute] string score)
+        {
+            try
+            {
+                var matches = await _matchQueryService.GetByScore(score);
+                return Ok(matches);
+            }
+            catch (ItemDoesNotExist ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+        
+        public override async Task<ActionResult<MatchDto>> GetByStadiumRoute([FromRoute] string stadium)
+        {
+            try
+            {
+                var matches = await _matchQueryService.GetByStadium(stadium);
+                return Ok(matches);
+            }
+            catch (ItemDoesNotExist ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+        
+        public override async Task<ActionResult<MatchDto>> GetByCountryRoute([FromRoute] string country)
+        {
+            try
+            {
+                var matches = await _matchQueryService.GetByCountry(country);
+                return Ok(matches);
+            }
+            catch (ItemDoesNotExist ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
 
-        public override async Task<ActionResult<FootballMatch>> UpdateMatch([FromRoute]int id, [FromBody] UpdateMatchRequest request)
+        public override async Task<ActionResult<MatchDto>> UpdateMatch([FromRoute]int id, [FromBody] UpdateMatchRequest request)
         {
             try
             {

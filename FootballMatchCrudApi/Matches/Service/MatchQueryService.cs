@@ -1,4 +1,5 @@
-﻿using FootballMatchCrudApi.Matches.Model;
+﻿using FootballMatchCrudApi.Dto;
+using FootballMatchCrudApi.Matches.Model;
 using FootballMatchCrudApi.Matches.Repository.interfaces;
 using FootballMatchCrudApi.Matches.Service.Interfaces;
 using FootballMatchCrudApi.System.Constant;
@@ -16,12 +17,12 @@ namespace FootballMatchCrudApi.Matches.Service
             _repository = repository;
         }
 
-        public async Task<IEnumerable<FootballMatch>> GetAllMatches()
+        public async Task<ListMatchDto> GetAllMatches()
         {
 
-            IEnumerable<FootballMatch> matches = await _repository.GetAllAsync();
+            ListMatchDto matches = await _repository.GetAllAsync();
 
-            if (matches.Count().Equals(0))
+            if (matches.matchList.Count().Equals(0))
             {
                 throw new ItemDoesNotExist(Constants.NO_MATCHES_EXIST);
             }
@@ -29,9 +30,9 @@ namespace FootballMatchCrudApi.Matches.Service
             return matches;
         }
 
-        public async Task<FootballMatch> GetByScore(string score)
+        public async Task<MatchDto> GetByScore(string score)
         {
-            FootballMatch match = await _repository.GetByScoreAsync(score);
+            MatchDto match = await _repository.GetByScoreAsync(score);
 
             if (match == null)
             {
@@ -41,9 +42,9 @@ namespace FootballMatchCrudApi.Matches.Service
             return match;
         }
 
-        public async Task<FootballMatch> GetById(int id)
+        public async Task<MatchDto> GetById(int id)
         {
-            FootballMatch match = await _repository.GetByIdAsync(id);
+            MatchDto match = await _repository.GetByIdAsync(id);
 
             if (match == null)
             {
@@ -52,5 +53,30 @@ namespace FootballMatchCrudApi.Matches.Service
 
             return match;
         }
+        
+        public async Task<MatchDto> GetByStadium(string stadium)
+        {
+            MatchDto match = await _repository.GetByStadiumAsync(stadium);
+
+            if (match == null)
+            {
+                throw new ItemDoesNotExist(Constants.MATCH_DOES_NOT_EXIST);
+            }
+
+            return match;
+        }
+        
+        public async Task<MatchDto> GetByCountry(string country)
+        {
+            MatchDto match = await _repository.GetByCountryAsync(country);
+
+            if (match == null)
+            {
+                throw new ItemDoesNotExist(Constants.MATCH_DOES_NOT_EXIST);
+            }
+
+            return match;
+        }
+        
     }
 }

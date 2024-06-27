@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FootballMatchCrudApi.Matches.Model
 {
-    [Table("match")]
+    [Table("footballmatch")]
     public class FootballMatch
     {
 

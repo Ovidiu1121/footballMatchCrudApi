@@ -1,11 +1,14 @@
-﻿using FootballMatchCrudApi.Matches.Model;
+﻿using FootballMatchCrudApi.Dto;
+using FootballMatchCrudApi.Matches.Model;
 
 namespace FootballMatchCrudApi.Matches.Service.Interfaces
 {
     public interface IMatchQueryService
     {
-        Task<IEnumerable<FootballMatch>> GetAllMatches();
-        Task<FootballMatch> GetByScore(string score);
-        Task<FootballMatch> GetById(int id);
+        Task<ListMatchDto> GetAllMatches();
+        Task<MatchDto> GetByScore(string score);
+        Task<MatchDto> GetById(int id);
+        Task<MatchDto> GetByStadium(string stadium);
+        Task<MatchDto> GetByCountry(string country);
     }
 }
